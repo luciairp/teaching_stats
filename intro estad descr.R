@@ -11,7 +11,7 @@
 # para hacer eso cargamos los valores separados por comas
 # dentro del paréntesis de la función "c"
 # se ve así 
-c(1,2,45,6,9,1.3,4)
+c(1,2,5,6,9,1.3,4)
 
 # para que quede guardado en la memoria de R
 # le asignamos un nombre con la flechita
@@ -34,14 +34,10 @@ diff(range(datos))/nclass.Sturges(datos)
 a <- diff(range(datos))/nclass.Sturges(datos)
 
 
-# agrupar datos
+# agrupar datos -----------------------------------------------------------
 
 # para los intervalos de clase necesito calcular los valores
 # límite de cada uno. Empiezo por el izquierdo
-
-L1 <- min(datos)
-L2 <- L1 + a
-L3 <- L2 + a
 
 lim <- numeric(nclass.Sturges(datos)+1)
 lim[1] <- min(datos)
@@ -56,26 +52,35 @@ for (i in 1:nclass.Sturges(datos)){
 }
 
 # para los frecuencias absolutas
-# usamos el conteo que hace la función hist()
-fi <- hist(datos,right=F,plot=F)$count
+# podemos usar el conteo que hace la función hist()
+# fi <- hist(datos,right=F,plot=F)$count
 
 # para las frecuencias relativas
-fri <- fi/length(datos)
+# fri <- fi/length(datos)
 
 # para ver los intervalos
 
-# uso función cut() y otras para cortar y agrupar
+# uso función cut() que separa en intervalos al rango de datos
 clases <-  cut(datos, breaks = nclass.Sturges(datos), right=FALSE)
 intervalos <- levels(clases)
-# mi <- numeric(nclass.Sturges(datos))
-# for (i in 1:nclass.Sturges(datos)){
-#   mi[i] <- (lim[i]+lim[i+1])/2
-# }
 
-fi <- table(clases)
+fi <- as.vector(table(clases))
 fri <- fi/length(datos)
 
-Fr.cum.abs <-  cumsum(fi) 
+Fi <-  cumsum(fi) 
+Fri <- Fi/length(datos)
 
 # fabrico tabla de frecuencias con todo este material 
-tabla <-  data.frame(intervals, mc, Fr.abs, Fr.cum.abs, Fr.rel, Fr.cum.rel)
+tabla <-  data.frame(intervalos, mi, fi, fri, Fi, Fri)
+
+
+# gráficos descriptivos ---------------------------------------------------
+
+# tallo y hojas
+stem(datos)
+library(aplpack)
+stem.leaf(datos)
+
+hist(datos,right = F)
+
+pie(datos)
