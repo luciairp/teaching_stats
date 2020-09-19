@@ -38,3 +38,23 @@ ggplot(as_tibble(ixodes),aes(x=value))+
   geom_bar(width = .1, fill = 'darkgreen')+
   labs(y= "frecuencia absoluta", x = "garrapatas")+
   theme_light()
+
+# puedo calcular visualmente la media si busco
+# el centro de masa de la distribución
+
+# para calcular la media puedo hacerlo paso a paso:
+sum(ixodes)/length(ixodes)
+# o uso la función mean()
+mean(ixodes)
+
+# para la mediana puedo hacerlo paso a paso:
+# primero ordeno los valores:
+ixodes_ord <- sort(ixodes)
+# veo cuántos elementos tiene
+length(ixodes)
+# como tiene un número par de elementos la mediana es
+# el promedio de los dos valores centrales:
+(ixodes_ord[22]+ixodes_ord[23])/2
+
+# o también puedo usar la función median()
+median(ixodes)
