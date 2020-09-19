@@ -41,30 +41,36 @@ tabla <-  data.frame(intervalos, mi, fi, fri, Fi, Fri)
 (cv <- (sqrt(var(pez))/mean(pez))*100)
 
 # vamos a aprovechar para hacer gráficos descriptivos:
-pez <- tibble::as_tibble(pez)
+pez_t <- tibble::as_tibble(pez)
 library(tidyverse)
 
 # histograma 
 # ¡CUIDADO! por defecto R usa intervalos abiertos a izquierda
 
 # histograma de la guía: por defecto, abiertos a izquierda
-ggplot(pez,aes(x=value))+
+ggplot(pez_t,aes(x=value))+
   geom_histogram(bins = 6,fill='darkgreen')+
   labs(y= "frecuencia", x = "talla")+
   theme_light()
 
 # histograma con intervalos cerrados a izquierda
-ggplot(pez,aes(x=value))+
+ggplot(pez_t,aes(x=value))+
   geom_histogram(bins = 6,fill='darkgreen', closed = "left")+
   labs(y= "frecuencia", x = "talla")+
   theme_light()
 
+# histograma que empieza en el mínimo valor
+# (¡como la tabla de frecuencias que hicieron ustedes!)
+ggplot(pez_t,aes(x=value))+
+  geom_histogram(binwidth = 0.4 ,fill='darkgreen', closed = "left",boundary=min(pez))+
+  labs(y= "frecuencia", x = "talla")+
+  theme_light()
+
+
 # boxplot
-ggplot(pez, aes(x=value))+
+ggplot(pez_t, aes(x=value))+
   geom_boxplot(varwidth = F,col='darkgreen',fill='lightgreen')+
   #geom_dotplot(stackdir='center', dotsize=1)+
   labs(x = "talla")+
   coord_flip()+
   theme_light()
-
-

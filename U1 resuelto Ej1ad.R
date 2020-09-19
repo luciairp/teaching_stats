@@ -17,8 +17,9 @@ library(aplpack)
 # a la izquierda las unidades, a la derecha los decimales
 stem.leaf(derrumbe, trim.outliers = F, depths = F)
 
-derrumbe <- as_tibble(derrumbe)
-ggplot(derrumbe,aes(x=value))+
+library(ggplot2)
+library(tibble)
+ggplot(as_tibble(derrumbe),aes(x=value))+
   geom_histogram(fill='darkgreen', closed = "left",binwidth = 2)+
   labs(y= "frecuencia", x = "distancia (km)")+
   theme_light()

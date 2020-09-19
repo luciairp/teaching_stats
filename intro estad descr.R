@@ -22,17 +22,22 @@ datos <- c(1,2,45,6,9,1.3,4)
 # rango con la función diff() aplicada al rango
 diff(range(datos))
 
-# para definir la cantidad de intervalos podemos usar
-# la regla de Sturges:
+# para definir la cantidad de intervalos podemos usar Sturges:
+k_min <- 1+3.322*log10(length(datos))
+k_max <- 1+3.322*log(length(datos))
+# o la función integrada en R:
 nclass.Sturges(datos)
 
 # usando el rango y el número de clases podemos calcular 
-# la amplitud de los intervalos de clase de igul tamaño
+# la amplitud de los intervalos de clase de igual tamaño
+(max(datos)-min(datos))/nclass.Sturges(datos)
+
+# o con las funciones integradas en R:
 diff(range(datos))/nclass.Sturges(datos)
+
 # si le asigno un nombre después lo puedo usar para calcular
 # los límites de los intervalos de clase
 a <- diff(range(datos))/nclass.Sturges(datos)
-
 
 # agrupar datos -----------------------------------------------------------
 
@@ -55,13 +60,12 @@ for (i in 1:nclass.Sturges(datos)){
 # podemos usar el conteo que hace la función hist()
 # fi <- hist(datos,right=F,plot=F)$count
 
-# para las frecuencias relativas
-# fri <- fi/length(datos)
-
-# para ver los intervalos
-
 # uso función cut() que separa en intervalos al rango de datos
-clases <-  cut(datos, breaks = nclass.Sturges(datos), right=FALSE)
+clases <-  cut(datos, breaks = nclass.Sturges(datos), 
+               right=FALSE,include.lowest = T)
+# right F es para cerrar intervalos a izquierda
+# include.lowest T es para que último intervalo sea cerrado
+
 intervalos <- levels(clases)
 
 fi <- as.vector(table(clases))
