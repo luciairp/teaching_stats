@@ -1,0 +1,9 @@
+supervivencia	lugar	pajaritos
+vive	puente	15
+muere	puente	5
+vive	edificio	40
+muere	edificio	2
+vive	rocas	32
+muere	rocas	12
+vive	borde	28
+muere	borde	7

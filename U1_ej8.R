@@ -1,9 +1,12 @@
-# cargamos los datos de la tabla en un objeto de nombre 'pez
+# cargamos los datos de la tabla en un objeto de nombre pez
 pez <- c(3.6,1.2,2.1,1.2,1.5,3.6,3.6,1.2,2.1,3.6,2.3,1.5,2,1.2)
 
 # evaluamos la cantidad de intervalos k adecuada para 14 datos
 # usamos la función de Sturges para evaluar el mínimo
 nclass.Sturges(pez)
+1+3.322*log10(14)
+1+3.322*log(14)
+
 # para respetar el histograma son 6
 k <- 6
 
@@ -14,10 +17,10 @@ diff(range(pez))
 # el rango R dividido por el número de clases k
 amplitud <- diff(range(pez))/k
 
-# partimos el conjunto de datos en 5 intervalos
+# partimos el conjunto de datos en 6 intervalos
 # que es lo que se ve en el histograma
 # usamos intervalos abiertos a derecha
-pez_part <- cut(pez, breaks = 6, right =F)
+pez_part <- cut(pez, breaks = 6, right =F, include.lowest = T)
 
 # los intervalos generados los vemos como texto acá
 (intervalos <- levels(pez_part))

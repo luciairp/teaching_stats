@@ -1,0 +1,7 @@
+trabaja	examenes	numero
+si	1	4
+si	2	2
+si	3	2
+no	1	5
+no	2	6
+no	3	1

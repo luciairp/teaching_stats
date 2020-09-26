@@ -1,0 +1,13 @@
+grupo	reaccion	pacientes
+1	poca	51
+1	media	33
+1	alta	16
+2	poca	58
+2	media	29
+2	alta	13
+3	poca	48
+3	media	42
+3	alta	30
+4	poca	26
+4	media	38
+4	alta	16

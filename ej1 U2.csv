@@ -1,0 +1,13 @@
+ejercicio,genero,numero
+BuenaSalud,Hombre,390
+NoTiempo,Hombre,360
+MalaSalud,Hombre,110
+Desagrado,Hombre,40
+Pereza,Hombre,10
+Otras,Hombre,90
+BuenaSalud,Mujer,210
+NoTiempo,Mujer,370
+MalaSalud,Mujer,150
+Desagrado,Mujer,80
+Pereza,Mujer,60
+Otras,Mujer,130
