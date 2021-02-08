@@ -52,6 +52,8 @@ addmargins(prop.table(tabla), c(1,2))
 
 datos <- read.csv("ej1 U2.csv")
 
+# uso la función xtabs que me permite explicitar de dónde provienen
+# las frecuencias observadas
 ej1_abs <- xtabs(numero ~ ejercicio + genero, data = datos)
 ej1_abs
 

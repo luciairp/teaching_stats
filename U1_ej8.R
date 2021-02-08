@@ -52,7 +52,7 @@ library(tidyverse)
 
 # histograma de la guía: por defecto, abiertos a izquierda
 ggplot(pez_t,aes(x=value))+
-  geom_histogram(bins = 6,fill='darkgreen')+
+  geom_histogram(bins = 7,fill='darkgreen')+
   labs(y= "frecuencia", x = "talla")+
   theme_light()
 
